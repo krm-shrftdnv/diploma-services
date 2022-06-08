@@ -28,6 +28,7 @@ class MrcnnService(Service):
         self.output_directory = output_directory
         if not os.path.exists(self.output_directory):
             os.makedirs(self.output_directory)
+        print('ready to handle mcrnn messages')
         super().__init__(connection_channel, input_queue_name, output_queue_name)
 
     def execute(self, payload: bytes):
@@ -81,8 +82,6 @@ if __name__ == '__main__':
     inference_model = MaskRCNN(mode='inference', model_dir=f'{current_dir}/../models', config=inference_cfg)
     last_weights = f'{current_dir}/../models/{MODEL_NAME}'
     inference_model.load_weights(last_weights, by_name=True)
-
-    print('ready to handle mcrnn messages')
 
     service = MrcnnService(
         connection_channel=channel,

@@ -15,5 +15,6 @@ imgaug
 IPython[all]
 mrcnn
 pika
-opencv-python
-pytesseract
+torch
+torchvision
+easyocr
